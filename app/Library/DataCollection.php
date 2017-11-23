@@ -53,7 +53,6 @@ class DataCollection
 
     public function csiSave($filename, $tables)
     {
-        echo storage_path('app/data/'.$filename);
         Excel::load(storage_path('app/data/'.$filename), function($reader) {
             $this->execl_data = $reader->toArray();
         });
@@ -113,7 +112,7 @@ class DataCollection
             $data['low'] = trim($value[4], "\"\t\n\r\0\x0B");
             $data['close'] = trim($value[5], "\"\t\n\r\0\x0B");
             $data['change'] = trim($value[7], "\"\t\n\r\0\x0B");
-            $data['turnover'] = '';
+            $data['turnover'] = 0;
             $data['pe1'] = trim($value[9], "\"\t\n\r\0\x0B");
             $data['dp1'] = trim($value[8], "\"\t\n\r\0\x0B");
             $insertData[] = $data;
